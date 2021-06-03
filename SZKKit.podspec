@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SZKKit"
-  spec.version      = "0.0.6"
+  spec.version      = "0.0.7"
   spec.summary      = "a common framework"
 
   # This description is used to generate tags and improve search results.
@@ -25,7 +25,8 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-		Mei shen me luan yong
+		include Operator
+		include UIChain(SnapKit)
                    DESC
 
   spec.homepage     = "https://github.com/steveszk/ZKKit.git"
@@ -132,6 +133,6 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # spec.dependency "SnapKit"
+  spec.dependency 'SnapKit'
 
 end
