@@ -16,8 +16,8 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SZKKit"
-  spec.version      = "0.0.8"
-  spec.summary      = "Some Util.. Operator,UIChain(snapkit)"
+  spec.version      = "0.0.9"
+  spec.summary      = "Some Util: SnapKit,ObjectMapper,SVProgressHUD,IQKeyboardManagerSwift,Moya/RxSwift,RxSwift,RxCocoa,RxDataSources,CocoaLumberjack/Swift,Kingfisher,MJRefresh"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -92,7 +92,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "Util/*.swift"
+  spec.source_files  = "*.swift" "Util/*.swift" "Extension/*.swift"
 
   # spec.public_header_files = "Classes/**/*.h"
 
@@ -134,5 +134,14 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   spec.dependency 'SnapKit'
-
+  spec.dependency 'ObjectMapper'
+  spec.dependency 'SVProgressHUD'
+  spec.dependency 'IQKeyboardManagerSwift'
+  spec.dependency 'Moya/RxSwift'
+  spec.dependency 'RxSwift'
+  spec.dependency 'RxCocoa'
+  spec.dependency 'RxDataSources'
+  spec.dependency 'CocoaLumberjack/Swift'
+  spec.dependency 'Kingfisher'
+  spec.dependency 'MJRefresh'
 end
