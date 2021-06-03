@@ -5,7 +5,7 @@
 //  Created by 盛子康 on 2021/3/30.
 //
 
-//import SnapKit
+import SnapKit
 
 public protocol ViewChainable {}
 
@@ -21,7 +21,7 @@ public extension ViewChainable where Self: UIView{
     }
 }
 
-public extension UIView: ViewChainable{
+extension UIView: ViewChainable{
     /// 添加subview
     ///
     /// - Parameter toSuperView: 父view
