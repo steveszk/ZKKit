@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SZKKit"
-  spec.version      = "0.1.0"
+  spec.version      = "0.1.1"
   spec.summary      = "Some Util: SnapKit,ObjectMapper,SVProgressHUD,IQKeyboardManagerSwift,Moya/RxSwift,RxSwift,RxCocoa,RxDataSources,CocoaLumberjack/Swift,Kingfisher,MJRefresh"
 
   # This description is used to generate tags and improve search results.
@@ -92,7 +92,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  =  "Util/*.swift", "Extension/*.swift"
+  spec.source_files  =  "*.swift", "Util/*.swift", "Extension/*.swift"
 
   # spec.public_header_files = "Classes/**/*.h"
 
