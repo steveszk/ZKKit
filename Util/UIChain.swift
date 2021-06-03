@@ -26,27 +26,27 @@ extension UIView: ViewChainable{
     ///
     /// - Parameter toSuperView: 父view
     /// - Returns: 返回自己
-    func addTo(toSuperView: UIView) -> Self{
+    public func addTo(toSuperView: UIView) -> Self{
         toSuperView.addSubview(self)
         return self
     }
     
-    func insertTo(toSuperView: UIView,index:Int) -> Self{
+    public func insertTo(toSuperView: UIView,index:Int) -> Self{
         toSuperView.insertSubview(self, at: index)
         return self
     }
     
-    func insertAbove(toSuperView: UIView,above:UIView) -> Self{
+    public func insertAbove(toSuperView: UIView,above:UIView) -> Self{
         toSuperView.insertSubview(self, aboveSubview: above)
         return self
     }
     
-    func insertBelow(toSuperView:UIView,below:UIView) -> Self{
+    public func insertBelow(toSuperView:UIView,below:UIView) -> Self{
         toSuperView.insertSubview(self, belowSubview: below)
         return self
     }
     
-    func arrangeToStackView(toStackView:UIStackView) -> Self{
+    public func arrangeToStackView(toStackView:UIStackView) -> Self{
         toStackView.addArrangedSubview(self)
         return self
     }
@@ -56,7 +56,7 @@ extension UIView: ViewChainable{
     ///
     /// - Parameter snapKitMaker: 布局closure
     /// - Returns: 返回自己
-    func layout(snapKitMaker:(ConstraintMaker) -> Void) -> Self{
+    public func layout(snapKitMaker:(ConstraintMaker) -> Void) -> Self{
         snp.makeConstraints { (make) in
             snapKitMaker(make)
         }
@@ -68,7 +68,7 @@ extension UIView: ViewChainable{
     ///
     /// - Parameter snapKitMaker: 更新布局bclosure
     /// - Returns: 返回自己
-    func updateLayout(snapKitMaker:(ConstraintMaker) -> Void) -> Self{
+    public func updateLayout(snapKitMaker:(ConstraintMaker) -> Void) -> Self{
         snp.updateConstraints { (make) in
             snapKitMaker(make)
         }
@@ -76,13 +76,13 @@ extension UIView: ViewChainable{
     }
     
     @discardableResult
-    func setFrame(frame:CGRect) -> Self{
+    public func setFrame(frame:CGRect) -> Self{
         self.frame = frame
         return self
     }
     
     @discardableResult
-    func setShadow(offset:CGSize,opacity:Float,radius:CGFloat,color:CGColor,path:CGRect?) -> Self{
+    public func setShadow(offset:CGSize,opacity:Float,radius:CGFloat,color:CGColor,path:CGRect?) -> Self{
         layer.shadowColor = color
         layer.shadowOffset = offset
         layer.shadowOpacity = opacity

@@ -16,8 +16,8 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SZKKit"
-  spec.version      = "0.0.7"
-  spec.summary      = "a common framework"
+  spec.version      = "0.0.8"
+  spec.summary      = "Some Util.. Operator,UIChain(snapkit)"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
