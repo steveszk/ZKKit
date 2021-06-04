@@ -56,12 +56,4 @@ public struct SZKKitConfig {
         self.successCode = successCode
         self.tokenInvalidateCode = tokenInvalidateCode
     }
-    
-    public static func sendTokenInvalidateNotification(){
-        NotificationCenter.default.post(name: .tokenInvalidate, object: nil)
-    }
-}
-
-public extension NSNotification.Name{
-    static let tokenInvalidate = NSNotification.Name("tokenInvalidate")
 }

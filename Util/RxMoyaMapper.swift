@@ -9,8 +9,6 @@ import Moya
 import ObjectMapper
 import SVProgressHUD
 
-public let feedback = UINotificationFeedbackGenerator()
-
 public enum SZKError : Swift.Error {
     // 解析失败
     case ParseJSONError
@@ -69,7 +67,7 @@ extension Response{
         if let code = json[SZKKitConfig.codeKey] as? Int {
 
             if code == SZKKitConfig.tokenInvalidateCode{
-                SZKKitConfig.sendTokenInvalidateNotification()
+                SZKKitUtil.sendTokenInvalidateNotification()
             }
 
             if code == SZKKitConfig.successCode{
@@ -124,7 +122,7 @@ extension Response{
         if let code = json[SZKKitConfig.codeKey] as? Int {
 
             if code == SZKKitConfig.tokenInvalidateCode{
-                SZKKitConfig.sendTokenInvalidateNotification()
+                SZKKitUtil.sendTokenInvalidateNotification()
             }
 
             if code == SZKKitConfig.successCode{
@@ -171,7 +169,7 @@ extension Response{
         if let code = json[SZKKitConfig.codeKey] as? Int {
             
             if code == SZKKitConfig.tokenInvalidateCode{
-                SZKKitConfig.sendTokenInvalidateNotification()
+                SZKKitUtil.sendTokenInvalidateNotification()
             }
         
             guard code == SZKKitConfig.successCode else {
@@ -209,7 +207,7 @@ extension Response{
         if let code = json[SZKKitConfig.codeKey] as? Int {
 
             if code == SZKKitConfig.tokenInvalidateCode{
-                SZKKitConfig.sendTokenInvalidateNotification()
+                SZKKitUtil.sendTokenInvalidateNotification()
             }
 
             if code == SZKKitConfig.successCode {
