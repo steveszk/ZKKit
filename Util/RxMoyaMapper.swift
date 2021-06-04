@@ -91,9 +91,9 @@ extension Response{
                 }
             } else {
                 feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-                LogError(message: "预期错误，code：\(code),msg:\(json[SZKKitConfig.messageKey] as! String)")
+                LogError(message: "预期错误，code：\(code),msg:\(json[SZKKitConfig.messageKey] as? String ?? "")")
                 SVProgressHUD.showInfo(withStatus: json[SZKKitConfig.messageKey] as? String)
-                throw SZKError.UnexpectedResult(code as! Int)
+                throw SZKError.UnexpectedResult(code)
             }
         } else {
             feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -138,9 +138,9 @@ extension Response{
                 }
             } else {
                 feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-                LogError(message: "预期错误，code：\(code),msg:\(json[SZKKitConfig.messageKey] as! String)")
+                LogError(message: "预期错误，code：\(code),msg:\(json[SZKKitConfig.messageKey] as? String ?? "")")
                 SVProgressHUD.showInfo(withStatus: json[SZKKitConfig.messageKey] as? String)
-                throw SZKError.UnexpectedResult(code as! Int)
+                throw SZKError.UnexpectedResult(code)
             }
         } else {
             feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -176,9 +176,9 @@ extension Response{
         
             guard code == SZKKitConfig.successCode else {
                 feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-                LogError(message: "预期错误，code：\(code),msg:\(json[SZKKitConfig.messageKey] as! String)")
+                LogError(message: "预期错误，code：\(code),msg:\(json[SZKKitConfig.messageKey] as? String ?? "")")
                 SVProgressHUD.showInfo(withStatus: json[SZKKitConfig.messageKey] as? String)
-                throw SZKError.UnexpectedResult(code as! Int)
+                throw SZKError.UnexpectedResult(code)
             }
         } else {
             feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -223,9 +223,9 @@ extension Response{
                 }
             }else {
                 feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-                LogError(message: "预期错误，code：\(code),msg:\(json[SZKKitConfig.messageKey] as! String)")
+                LogError(message: "预期错误，code：\(code),msg:\(json[SZKKitConfig.messageKey] as? String ?? "")")
                 SVProgressHUD.showInfo(withStatus: json[SZKKitConfig.messageKey] as? String)
-                throw SZKError.UnexpectedResult(code as! Int)
+                throw SZKError.UnexpectedResult(code)
             }
         } else {
             feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
