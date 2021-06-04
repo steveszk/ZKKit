@@ -159,13 +159,13 @@ extension Response{
             throw SZKError.RequestFailed
         }
         
-        guard let json = try? JSONSerialization.jsonObject(with: self.data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [String: Any]  else {
-            feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-            LogError(message: "服务器返回数据非json格式")
-            SVProgressHUD.showInfo(withStatus: "数据解析失败")
-            throw SZKError.ParseJSONError
-        }
-        
+//        guard let json = try? JSONSerialization.jsonObject(with: self.data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [String: Any]  else {
+//            feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+//            LogError(message: "服务器返回数据非json格式")
+//            SVProgressHUD.showInfo(withStatus: "数据解析失败")
+//            throw SZKError.ParseJSONError
+//        }
+        let json = [String:Any]()
         LogDebug(message: json.description)
         
         if let value = json[SZKKitConfig.codeKey],let code = value as? Int {
