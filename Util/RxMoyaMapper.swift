@@ -174,12 +174,12 @@ extension Response{
                 SZKKitConfig.sendTokenInvalidateNotification()
             }
         
-//            guard code == SZKKitConfig.successCode else {
-//                feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            guard code == SZKKitConfig.successCode else {
+                feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
 //                LogError(message: "预期错误，code：\(code),msg:\(json[SZKKitConfig.messageKey] as? String ?? "")")
 //                SVProgressHUD.showInfo(withStatus: json[SZKKitConfig.messageKey] as? String)
-//                throw SZKError.UnexpectedResult(code)
-//            }
+                throw SZKError.UnexpectedResult(code)
+            }
         } else {
             feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             LogError(message: "服务器返回code码非整形")
