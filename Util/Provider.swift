@@ -11,7 +11,7 @@ import SVProgressHUD
 struct networkPlugin:PluginType {
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
         var req = request
-        req.timeoutInterval = timeout
+        req.timeoutInterval = SZKKitConfig.timeout
         return req
     }
     

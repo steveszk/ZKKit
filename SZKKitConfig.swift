@@ -16,6 +16,7 @@ public struct SZKKitConfig {
     public static var messageKey:String = "message"
     public static var successCode:Int = 200
     public static var tokenInvalidateCode:Int = 0
+    public static var timeout:TimeInterval = 15.0
     
     public static func configPods(){
         
@@ -49,11 +50,12 @@ public struct SZKKitConfig {
         KingfisherManager.shared.cache.diskStorage.config.expiration = .days(5)
     }
     
-    public static func configRequestValue(codeKey:String,dataKey:String,messageKey:String,successCode:Int,tokenInvalidateCode:Int){
+    public static func configRequestValue(codeKey:String,dataKey:String,messageKey:String,successCode:Int,tokenInvalidateCode:Int,timeout:TimeInterval){
         self.codeKey = codeKey
         self.dataKey = dataKey
         self.messageKey = messageKey
         self.successCode = successCode
         self.tokenInvalidateCode = tokenInvalidateCode
+        self.timeout = timeout
     }
 }
