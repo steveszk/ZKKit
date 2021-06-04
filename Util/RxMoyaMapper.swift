@@ -175,11 +175,12 @@ extension Response{
             }
         
             guard code == SZKKitConfig.successCode else {
-                let message = json[SZKKitConfig.messageKey]
-                feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-                LogError(message: "预期错误，code：\(code),msg:\(message as? String ?? "")")
-                SVProgressHUD.showInfo(withStatus: message as? String)
-                throw SZKError.UnexpectedResult(code)
+                if let value = json[SZKKitConfig.messageKey],let message = value as? String{
+                    feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+                    LogError(message: "预期错误，code：\(code),msg:\(message)")
+                    SVProgressHUD.showInfo(withStatus: message)
+                    throw SZKError.UnexpectedResult(code)
+                }
             }
         } else {
             feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
