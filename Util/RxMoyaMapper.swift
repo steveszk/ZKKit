@@ -57,7 +57,7 @@ extension Response{
             throw SZKError.RequestFailed
         }
 
-        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]  else {
+        guard let data = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers),let json = data as? [String:Any] else{
             feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             LogError(message: "服务器返回数据非json格式")
             SVProgressHUD.showInfo(withStatus: "数据解析失败")
@@ -112,7 +112,7 @@ extension Response{
             throw SZKError.RequestFailed
         }
 
-        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]  else {
+        guard let data = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers),let json = data as? [String:Any] else{
             feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             LogError(message: "服务器返回数据非json格式")
             SVProgressHUD.showInfo(withStatus: "数据解析失败")
@@ -159,7 +159,7 @@ extension Response{
             throw SZKError.RequestFailed
         }
         
-        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]  else {
+        guard let data = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers),let json = data as? [String:Any] else{
             feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             LogError(message: "服务器返回数据非json格式")
             SVProgressHUD.showInfo(withStatus: "数据解析失败")
@@ -197,7 +197,7 @@ extension Response{
             throw SZKError.RequestFailed
         }
 
-        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]  else {
+        guard let data = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers),let json = data as? [String:Any] else{
             feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             LogError(message: "服务器返回数据非json格式")
             SVProgressHUD.showInfo(withStatus: "数据解析失败")
