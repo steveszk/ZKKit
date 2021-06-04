@@ -16,8 +16,8 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SZKKit"
-  spec.version      = "0.1.4"
-  spec.summary      = "Some Util: SnapKit,ObjectMapper,SVProgressHUD,IQKeyboardManagerSwift,Moya/RxSwift,RxSwift,RxCocoa,RxDataSources,CocoaLumberjack/Swift,Kingfisher,MJRefresh"
+  spec.version      = "0.1.5"
+  spec.summary      = "Some Util,Some Code"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,8 +25,17 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-		include Operator
-		include UIChain(SnapKit)
+		Include SnapKit
+		Include ObjectMapper 
+		Include SVProgressHUD 
+		Include IQKeyboardManagerSwift 
+		Include Moya/RxSwift 
+		Include RxSwift 
+		Include RxCocoa 
+		Include RxDataSources 
+		Include CocoaLumberjack/Swift 
+		Include Kingfisher 
+		Include MJRefresh
                    DESC
 
   spec.homepage     = "https://github.com/steveszk/ZKKit.git"
