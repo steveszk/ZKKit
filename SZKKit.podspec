@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SZKKit"
-  spec.version      = "0.1.3"
+  spec.version      = "0.1.4"
   spec.summary      = "Some Util: SnapKit,ObjectMapper,SVProgressHUD,IQKeyboardManagerSwift,Moya/RxSwift,RxSwift,RxCocoa,RxDataSources,CocoaLumberjack/Swift,Kingfisher,MJRefresh"
 
   # This description is used to generate tags and improve search results.
