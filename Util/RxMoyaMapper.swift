@@ -168,16 +168,17 @@ extension Response{
         
         LogDebug(message: json.description)
         
-        if let code = json[SZKKitConfig.codeKey] as? Int {
+        if let value = json[SZKKitConfig.codeKey],let code = value as? Int {
             
             if code == SZKKitConfig.tokenInvalidateCode{
                 SZKKitConfig.sendTokenInvalidateNotification()
             }
         
             guard code == SZKKitConfig.successCode else {
+                let message = json[SZKKitConfig.messageKey]
                 feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-//                LogError(message: "预期错误，code：\(code),msg:\(json[SZKKitConfig.messageKey] as? String ?? "")")
-//                SVProgressHUD.showInfo(withStatus: json[SZKKitConfig.messageKey] as? String)
+                LogError(message: "预期错误，code：\(code),msg:\(message as? String ?? "")")
+                SVProgressHUD.showInfo(withStatus: message as? String)
                 throw SZKError.UnexpectedResult(code)
             }
         } else {
