@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class SZKPhotoBrowserViewController: UIViewController,photoToBrowseable {
+public class SZKPhotoBrowserViewController: UIViewController,PhotoToBrowseable {
     
     public var photoBrowseCurrentIndex: Int = 0
     public var photos:[String]!
