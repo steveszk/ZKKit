@@ -59,7 +59,7 @@ struct svpPlugin:PluginType {
 }
 
 /// 正常的provider,带有插件token验证
-let normalProvider = MoyaProvider<MultiTarget>(plugins:[networkPlugin()])
+public let normalProvider = MoyaProvider<MultiTarget>(plugins:[networkPlugin()])
 
 /// 带有svp插件和token验证插件的provider，一般用作时间动作较长的操作，如图片上传，为了保证不混乱和意外发生，请求期间window禁止点击。
-let svpProvider = MoyaProvider<MultiTarget>(plugins:[svpPlugin(),networkPlugin()])
+public let svpProvider = MoyaProvider<MultiTarget>(plugins:[svpPlugin(),networkPlugin()])

@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SZKKit"
-  spec.version      = "0.2.4"
+  spec.version      = "0.2.5"
   spec.summary      = "Some Util,Some Code"
 
   # This description is used to generate tags and improve search results.
