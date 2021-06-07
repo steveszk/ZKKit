@@ -40,7 +40,7 @@ public let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
 public let navigationBarHeight = statusBarHeight + 44
 
 /// 屏宽比
-public let ratio = screenWidth / 375
+public let widthRito = screenWidth / 375
 
 /// feedback
 public let feedback = UINotificationFeedbackGenerator()
