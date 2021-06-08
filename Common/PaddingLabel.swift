@@ -13,12 +13,12 @@ public class PaddingLabel: UILabel {
     public var textInsets:UIEdgeInsets = .zero
     
     public override func drawText(in rect: CGRect) {
-        super.drawText(in: rect.inset(by: textInsets))
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, textInsets))
     }
     
     public override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
         let insets = textInsets
-        var rect = super.textRect(forBounds: bounds.inset(by: insets),
+        var rect = super.textRect(forBounds: UIEdgeInsetsInsetRect(bounds, insets),
                                   limitedToNumberOfLines: numberOfLines)
         
         rect.origin.x -= insets.left
