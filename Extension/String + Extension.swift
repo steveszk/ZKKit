@@ -130,4 +130,14 @@ public extension String {
             return nil
         }
     }
+    
+    func getHeight(attributes:[NSAttributedString.Key:Any],width:CGFloat) -> CGFloat{
+        let rect = NSString(string: self).boundingRect(with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        return ceil(rect.height)
+    }
+    
+    func getWidth(attributes:[NSAttributedString.Key:Any],height:CGFloat) -> CGFloat{
+        let rect = NSString(string: self).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: height), options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        return ceil(rect.width)
+    }
 }

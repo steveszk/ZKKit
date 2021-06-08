@@ -7,9 +7,14 @@
 
 public extension Dictionary{
     
-    var toJsonData:Data {
+    var toJsonData: Data{
         guard let data = try? JSONSerialization.data(withJSONObject: self, options: [])else{ fatalError() }
         return data
     }
     
+    var toJsonString: String{
+        guard let data = try? JSONSerialization.data(withJSONObject: self, options: [])else{ fatalError() }
+        guard let value = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else{ fatalError() }
+        return value as String
+    }
 }

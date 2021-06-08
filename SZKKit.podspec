@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SZKKit"
-  spec.version      = "0.3.1"
+  spec.version      = "1.0.0"
   spec.summary      = "Some Util,Some Code"
 
   # This description is used to generate tags and improve search results.
@@ -114,7 +114,7 @@ Pod::Spec.new do |spec|
   #  non-essential files like tests, examples and documentation.
   #
 
-  # spec.resource  = "icon.png"
+  spec.resource  = "DINPro-Medium.otf"
   # spec.resources = "Resources/*.png"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
@@ -153,4 +153,5 @@ Pod::Spec.new do |spec|
   spec.dependency 'CocoaLumberjack/Swift'
   spec.dependency 'Kingfisher'
   spec.dependency 'MJRefresh'
+# spec.dependency 'MLeaksFinder'
 end

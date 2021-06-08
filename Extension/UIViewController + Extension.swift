@@ -39,6 +39,22 @@ public extension UIViewController{
             navigationController?.viewControllers.remove(at: count - 2)
         }
     }
+    
+    @objc func callAction(number:String){
+        let phoneUrlStr = "telprompt://" + number
+        guard let url = URL(string: phoneUrlStr) else{return}
+        if UIApplication.shared.canOpenURL(url){
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    var topPresented: UIViewController{
+        if let presented = presentedViewController{
+            return presented.topPresented
+        }else{
+            return self
+        }
+    }
 }
 
 public extension UIViewController{

@@ -6,6 +6,7 @@
 //
 import RxCocoa
 import RxSwift
+import MJRefresh
 
 extension Reactive where Base: UIViewController {
     public var viewDidLoad: ControlEvent<Void> {
@@ -86,6 +87,63 @@ extension Reactive where Base: UIButton{
         return Binder(self.base, binding: { (button,value) in
             button.isEnabled = value
             value ? button.backgroundColor = UIColor.SZKThemeColor : (button.backgroundColor = UIColor.SZKThemeColor.withAlphaComponent(0.5))
+        })
+    }
+}
+
+extension Reactive where Base: UITextField{
+    
+    public var becomeResponder: Binder<Void> {
+        return Binder(self.base,binding: {(textField, _) in
+            textField.becomeFirstResponder()
+        })
+    }
+}
+
+extension Reactive where Base: MJRefreshComponent {
+    //    正在刷新事件
+    public var refreshing: ControlEvent<Void> {
+        let source: Observable<Void> = Observable.create {
+            [weak control = self.base] observer  in
+            if let control = control {
+                control.refreshingBlock = {
+                    if #available(iOS 10.0, *) {
+                        feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.success)
+                    }
+                    observer.on(.next(()))
+                }
+            }
+            return Disposables.create()
+        }
+        return ControlEvent(events: source)
+    }
+    
+    //停止刷新
+    public var endRefreshing: Binder<Bool> {
+        return Binder(base) { refresh, isEnd in
+            if isEnd {
+                refresh.endRefreshing()
+            }
+        }
+    }
+    
+    public var beginRefreshing:Binder<Void> {
+        return Binder(base) { refresh, void in
+            refresh.beginRefreshing()
+        }
+    }
+}
+
+extension Reactive where Base: UIActivityIndicatorView{
+    public var stop: Binder<Bool>{
+        return Binder(self.base, binding: { (view,value) in
+            value ? view.stopAnimating() : view.startAnimating()
+        })
+    }
+    
+    public var play: Binder<Bool>{
+        return Binder(self.base, binding: { (view,value) in
+            value ? view.startAnimating() : view.stopAnimating()
         })
     }
 }

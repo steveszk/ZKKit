@@ -32,4 +32,12 @@ public extension UIFont{
     static func medium(size:CGFloat = 14) -> UIFont{
         return UIFont(name: "PingFangSC-Medium", size: size)!
     }
+    
+    /// 获取DINPro字体，默认14号，在info.plist中添加Fonts provided by application ：DINPro-Medium.otf
+    ///
+    /// - Parameter size: 字体号
+    /// - Returns: 中号平方字体
+    static func din(size:CGFloat = 14) -> UIFont{
+        return UIFont(name: "DINPro-Medium", size: size)!
+    }
 }
