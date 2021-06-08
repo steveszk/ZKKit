@@ -4,6 +4,7 @@
 //
 //  Created by 盛子康 on 2021/3/30.
 //
+import CommonCrypto
 
 public extension String {
     
