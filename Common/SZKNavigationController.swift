@@ -45,7 +45,7 @@ public class SZKNavigationController: UINavigationController,UIGestureRecognizer
         return true
     }
     
-    public override var childViewControllerForStatusBarStyle: UIViewController?{
+    public override var childForStatusBarStyle: UIViewController?{
         return topViewController
     }
 }
