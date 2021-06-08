@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SZKKit"
-  spec.version      = "0.3.0"
+  spec.version      = "0.3.1"
   spec.summary      = "Some Util,Some Code"
 
   # This description is used to generate tags and improve search results.
@@ -126,10 +126,10 @@ Pod::Spec.new do |spec|
   #  the lib prefix of their name.
   #
 
-  spec.framework  = "CommonCrypto"
+  # spec.framework  = "CommonCrypto"
   # spec.frameworks = "SomeFramework", "AnotherFramework"
 
-  #spec.library   = "CommonCrypto"
+  # spec.library   = "CommonCrypto"
   # spec.libraries = "iconv", "xml2"
 
 
