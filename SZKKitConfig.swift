@@ -17,6 +17,7 @@ public struct SZKKitConfig {
     public static var successCode:Int = 200
     public static var tokenInvalidateCode:Int = 0
     public static var timeout:TimeInterval = 15.0
+    public static var themeColor:UIColor = .white
     
     public static func configPods(){
         
@@ -57,6 +58,10 @@ public struct SZKKitConfig {
         self.successCode = successCode
         self.tokenInvalidateCode = tokenInvalidateCode
         self.timeout = timeout
+    }
+    
+    public static func configAPPConstant(themeColor:UIColor){
+        self.themeColor = themeColor
     }
 }
 

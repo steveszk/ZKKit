@@ -38,7 +38,7 @@ public class SZKWebViewController: UIViewController {
             make.leading.trailing.top.equalTo(webView)
             make.height.equalTo(2)
             }.config { (view) in
-                view.tintColor = .SZKThemeColor
+                view.tintColor = SZKKitConfig.themeColor
                 view.trackTintColor = .white
         }
     }

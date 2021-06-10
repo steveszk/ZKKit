@@ -37,7 +37,7 @@ public extension UIFont{
     ///
     /// - Parameter size: 字体号
     /// - Returns: 中号平方字体
-    static func din(size:CGFloat = 14) -> UIFont{
-        return UIFont(name: "DINPro-Medium", size: size)!
-    }
+//    static func din(size:CGFloat = 14) -> UIFont{
+//        return UIFont(name: "DINPro-Medium", size: size)!
+//    }
 }

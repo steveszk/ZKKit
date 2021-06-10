@@ -86,7 +86,7 @@ extension Reactive where Base: UIButton{
     public var enable: Binder<Bool> {
         return Binder(self.base, binding: { (button,value) in
             button.isEnabled = value
-            value ? button.backgroundColor = UIColor.SZKThemeColor : (button.backgroundColor = UIColor.SZKThemeColor.withAlphaComponent(0.5))
+            value ? button.backgroundColor = SZKKitConfig.themeColor : (button.backgroundColor = SZKKitConfig.themeColor.withAlphaComponent(0.5))
         })
     }
 }
