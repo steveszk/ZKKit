@@ -42,8 +42,8 @@ public class PlaceHolderTextView: UITextView {
     }
 }
 
-public extension PlaceHolderTextView: UITextViewDelegate{
-    func textViewDidChange(_ textView: UITextView) {
+extension PlaceHolderTextView: UITextViewDelegate{
+    public func textViewDidChange(_ textView: UITextView) {
         textPlaceHolder.isHidden = textView.text != ""
     }
 }

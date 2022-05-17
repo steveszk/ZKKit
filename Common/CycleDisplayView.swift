@@ -57,11 +57,11 @@ public class CycleDisplayView: UIView, UIScrollViewDelegate {
         self.addSubview(self.scrollView)
         self.addSubview(self.pageControl)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(JJCycleDisplayView.tapDisplayViewAction))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CycleDisplayView.tapDisplayViewAction))
         self.addGestureRecognizer(tap)
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         
         self.scrollView.frame = self.bounds
@@ -89,7 +89,7 @@ public class CycleDisplayView: UIView, UIScrollViewDelegate {
             let imageView = UIImageView()
             imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
-            imageView.setLineImageWithPlaceHolder(url: path)
+            imageView.setImageWithPlaceHolder(url: path,placeHolder: .horizontal)
             self.scrollView.addSubview(imageView)
             self.setNeedsLayout()
             numberOfPages += 1
@@ -105,15 +105,15 @@ public class CycleDisplayView: UIView, UIScrollViewDelegate {
     }
     
     // MARK: - ScrollView Delegate and Handles
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.invalidateTimer()
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.fireTimer()
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.pageControl.currentPage = self.horizontalPageNumber()
     }
     
@@ -131,7 +131,7 @@ public class CycleDisplayView: UIView, UIScrollViewDelegate {
     }
     
     func fireTimer() {
-        self.timer = Timer.scheduledTimer(timeInterval: 8, target: self, selector: #selector(JJCycleDisplayView.autoPage), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 8, target: self, selector: #selector(CycleDisplayView.autoPage), userInfo: nil, repeats: true)
         RunLoop.main.add(self.timer!, forMode: RunLoop.Mode.common)
     }
     

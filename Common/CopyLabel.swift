@@ -20,12 +20,12 @@ public class CopyLabel: UILabel {
     
     // MARK: - 必须实现的两个方法
     // 重写返回
-    override var canBecomeFirstResponder: Bool {
+    public override var canBecomeFirstResponder: Bool {
         return true
     }
     
     // 可以响应的方法
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(copyText) {
             return true
         }

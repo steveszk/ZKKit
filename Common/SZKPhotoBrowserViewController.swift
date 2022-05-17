@@ -44,7 +44,7 @@ public class SZKPhotoBrowserViewController: UIViewController,PhotoToBrowseable {
         view.addSubview(collectionView)
     }
     
-    func photoBrowseImageViewFrameForIndex(index: Int, imageSize: CGSize?) -> CGRect {
+    public func photoBrowseImageViewFrameForIndex(index: Int, imageSize: CGSize?) -> CGRect {
         if let size = imageSize{
             //如果图片比屏幕小或者等于屏幕宽，直接返回图片实际大小并且居中.如果图片比屏幕大，那么等比例缩小至屏幕宽度
 //            if size.width <= screenWidth{
@@ -109,7 +109,7 @@ extension SZKPhotoBrowserViewController:UICollectionViewDataSource,UICollectionV
         return cell
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         photoBrowseCurrentIndex = Int(scrollView.contentOffset.x / width)
     }
 }
@@ -199,13 +199,13 @@ public class SZKPhotoBrowserCollectionViewCell:UICollectionViewCell{
     }
 }
 
-public extension JJPhotoBrowserCollectionViewCell: UIScrollViewDelegate{
+extension SZKPhotoBrowserCollectionViewCell: UIScrollViewDelegate{
     
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return photo
     }
     
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
         let width = scrollView.bounds.width - scrollView.contentSize.width
         let height = scrollView.bounds.height - scrollView.contentSize.height
         let offsetX = width > 0 ? width / 2 : 0

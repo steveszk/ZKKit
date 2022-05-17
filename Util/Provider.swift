@@ -9,13 +9,14 @@ import Moya
 import SVProgressHUD
 
 public struct NetworkPlugin:PluginType {
-    func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
+    
+    public func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
         var req = request
         req.timeoutInterval = SZKKitConfig.timeout
         return req
     }
     
-    func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
+    public func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
         //如果请求未成功，response是未nil，后面的mapper当然也不会执行了。这里拿到Moyaerror中的underlying，转为NScode拿到code码对应。code码和reponse中的statuscode不一样
         if case .failure(let moyaError) = result{
             guard case let .underlying(afError,_) = moyaError else{return}
@@ -49,11 +50,11 @@ public struct NetworkPlugin:PluginType {
 //FIXME: 请求还没回来的时候又个弹窗，原window没有恢复交互能力
 public struct SvpPlugin:PluginType {
     
-    func willSend(_ request: RequestType, target: TargetType) {
+    public func willSend(_ request: RequestType, target: TargetType) {
         SVProgressHUD.normalShow(status: "请稍后")
     }
     
-    func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
+    public func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
         SVProgressHUD.normalDismiss()
     }
 }
