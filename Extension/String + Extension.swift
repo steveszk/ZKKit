@@ -12,7 +12,7 @@ public extension String {
     
     /// 用正则表达式验证是否是手机号格式
     var validatePhone:Bool{
-        let regex = "^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$"
+        let regex = "^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\\d{8}$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         let isValid = predicate.evaluate(with: self)
         return isValid
@@ -28,7 +28,7 @@ public extension String {
     
     /// 验证是否是验证码格式，4位数字
     var validateCode:Bool{
-        return count == 4
+        return count == 6
     }
     
     /// 用正则表达式验证是否是用户名
@@ -139,5 +139,32 @@ public extension String {
     func getWidth(attributes:[NSAttributedString.Key:Any],height:CGFloat) -> CGFloat{
         let rect = NSString(string: self).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: height), options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
         return ceil(rect.width)
+    }
+    
+    //yyyy-MM-dd HH:mm:ss
+    func forDate(template:String) -> Date?{
+        let f = DateFormatter()
+        f.dateFormat = template
+        return f.date(from: self)
+    }
+    
+    /// sha256
+    var sha256: String{
+        let utf8 = cString(using: .utf8)
+        var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
+        CC_SHA256(utf8, CC_LONG(utf8!.count - 1), &digest)
+        return digest.reduce("") { $0 + String(format:"%02x", $1) }
+    }
+    
+    var trimSpace: String{
+        trimmingCharacters(in: .whitespaces)
+    }
+    
+    func urlEncoded() -> String? {
+        return addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed)
+    }
+    
+    func urlDecoded() -> String? {
+        return removingPercentEncoding
     }
 }

@@ -41,4 +41,17 @@ public extension UIImage{
         }
         return data
     }
+    
+    func toScaleImage(size:CGSize) -> UIImage?{
+        
+        UIGraphicsBeginImageContext(size)
+        
+        draw(in: CGRect(origin: .zero, size: size))
+        
+        let scaleImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return scaleImage
+    }
 }

@@ -55,6 +55,16 @@ public extension UIViewController{
             return self
         }
     }
+    
+    var currentTopViewController: UIViewController?{
+        if let tabVc = self as? UITabBarController{
+            return tabVc.selectedViewController?.currentTopViewController
+        }else if let navi = self as? UINavigationController{
+            return navi.topViewController?.currentTopViewController
+        }else{
+            return self
+        }
+    }
 }
 
 public extension UIViewController{

@@ -94,6 +94,8 @@ public let navigationBarHeight = statusBarHeight + 44
 
 /// 屏宽比
 public let widthRito = screenWidth / 375
+//  屏高比
+public let heightRito = screenHeight / 667
 
 /// feedback
 public let feedback = UINotificationFeedbackGenerator()

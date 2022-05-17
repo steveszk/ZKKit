@@ -12,6 +12,10 @@ public extension Double{
         return widthRito * CGFloat(self)
     }
     
+    var screenHeightRatio:CGFloat{
+        return heightRito * CGFloat(self)
+    }
+    
     func roundTo(places: Int) -> Double {
         let divisor = pow(10.0,Double(places))
         return (self * divisor).rounded() / divisor
@@ -23,5 +27,9 @@ public extension Double{
         }else{
             return "\(ceil(self))m"
         }
+    }
+    
+    var milsecond:Int{
+        return Int(self) * 1000
     }
 }

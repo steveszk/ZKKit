@@ -12,9 +12,11 @@ public class SZKNavigationController: UINavigationController,UIGestureRecognizer
     
     /// 左边的返回按钮，已经添加了返回pop
     public lazy var popItem = UIBarButtonItem(image: UIImage(named:"navigationBack"), style: .plain, target: self, action: #selector(self.backAction))
+    public var enableMultiGesture = false
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         self.interactivePopGestureRecognizer?.delegate = self //手势冲突代理
     }
     
@@ -43,6 +45,13 @@ public class SZKNavigationController: UINavigationController,UIGestureRecognizer
             return self.viewControllers.count > 1
         }
         return true
+    }
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if (gestureRecognizer == self.interactivePopGestureRecognizer) {
+            return enableMultiGesture
+        }
+        return false
     }
     
     public override var childForStatusBarStyle: UIViewController?{

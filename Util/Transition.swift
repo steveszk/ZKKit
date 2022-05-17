@@ -49,12 +49,7 @@ class GenericPresentAnimation:NSObject,UIViewControllerAnimatedTransitioning {
             return
         }
         
-        let topViewController:UIViewController?
-        if let navi = currentVC as? UINavigationController{
-            topViewController = navi.topViewController
-        }else{
-            topViewController = currentVC
-        }
+        let topViewController = currentVC.currentTopViewController
         
         guard let fromVC = topViewController as? PhotoFromBrowseable else{
             transitionContext.completeTransition(false)
@@ -102,12 +97,7 @@ class GenericDismissAnimation:NSObject,UIViewControllerAnimatedTransitioning{
             return
         }
         
-        let topViewController:UIViewController?
-        if let navi = currentVC as? UINavigationController{
-            topViewController = navi.topViewController
-        }else{
-            topViewController = currentVC
-        }
+        let topViewController = currentVC.currentTopViewController
         
         guard let fromVC = topViewController as? PhotoFromBrowseable else{
             transitionContext.completeTransition(false)

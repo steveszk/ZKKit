@@ -7,30 +7,6 @@
 
 public extension Date{
     
-    var dateStringByGenericPattern:String {
-        let f = DateFormatter()
-        f.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return f.string(from: self)
-    }
-    
-    var dateStringByYearMonthDayPattern:String {
-        let f = DateFormatter()
-        f.dateFormat = "yyyy年MM月dd日"
-        return f.string(from: self)
-    }
-    
-    var dateStringByMonthDayPattern:String{
-        let f = DateFormatter()
-        f.dateFormat = "MM月dd日"
-        return f.string(from: self)
-    }
-    
-    var dateStringByYearMonthPattern:String{
-        let f = DateFormatter()
-        f.dateFormat = "yyyy年MM月"
-        return f.string(from: self)
-    }
-    
     var day:Int{
         return Calendar.current.component(.day, from: self)
     }
@@ -41,5 +17,20 @@ public extension Date{
     
     var year:Int{
         return Calendar.current.component(.year, from: self)
+    }
+    
+    var week:Int{
+        return Calendar.current.component(.weekday, from: self)
+    }
+    
+    //yyyy-MM-dd HH:mm:ss
+    func forDateString(template:String) -> String{
+        let f = DateFormatter()
+        f.dateFormat = template
+        return f.string(from: self)
+    }
+    
+    var timeIntervalString: String{
+        return String(timeIntervalSince1970)
     }
 }

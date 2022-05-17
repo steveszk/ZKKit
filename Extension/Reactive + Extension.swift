@@ -107,9 +107,7 @@ extension Reactive where Base: MJRefreshComponent {
             [weak control = self.base] observer  in
             if let control = control {
                 control.refreshingBlock = {
-                    if #available(iOS 10.0, *) {
-                        feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.success)
-                    }
+                    feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.success)
                     observer.on(.next(()))
                 }
             }
@@ -134,6 +132,19 @@ extension Reactive where Base: MJRefreshComponent {
     }
 }
 
+extension Reactive where Base: MJRefreshFooter{
+    
+    public var endRefreshingWithNoMoreData: Binder<Bool> {
+        return Binder(self.base,binding: {(footer, value) in
+            if value{
+                footer.endRefreshingWithNoMoreData()
+            }else{
+                footer.endRefreshing()
+            }
+        })
+    }
+}
+
 extension Reactive where Base: UIActivityIndicatorView{
     public var stop: Binder<Bool>{
         return Binder(self.base, binding: { (view,value) in
@@ -144,6 +155,24 @@ extension Reactive where Base: UIActivityIndicatorView{
     public var play: Binder<Bool>{
         return Binder(self.base, binding: { (view,value) in
             value ? view.startAnimating() : view.stopAnimating()
+        })
+    }
+}
+
+extension Reactive where Base: UITableView{
+    
+    public var cellActionOperate: Binder<(Int,CellAction)> {
+        return Binder(self.base, binding: { (table,value) in
+            table.beginUpdates()
+            switch value.1{
+            case .delete(let animate):
+                table.deleteRows(at: [IndexPath(row: value.0, section: 0)], with: animate)
+            case .insert(let animate):
+                table.insertRows(at: [IndexPath(row:value.0, section: 0)], with: animate)
+            case .refresh(let animate):
+                table.reloadRows(at: [IndexPath(row:value.0, section: 0)], with: animate)
+            }
+            table.endUpdates()
         })
     }
 }

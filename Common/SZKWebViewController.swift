@@ -12,6 +12,7 @@ public class SZKWebViewController: UIViewController {
     public let progress = UIProgressView()
     public var canload = false
     
+    public var needHideBar = false
     public var webTitle:String?
     public var url:String?
     
@@ -22,7 +23,9 @@ public class SZKWebViewController: UIViewController {
     
     public func setupUI(){
         
-        title = webTitle
+        if !needHideBar{
+            title = webTitle
+        }
         
         webView.addTo(toSuperView: view).layout { (make) in
             make.edges.equalTo(view)
@@ -56,6 +59,22 @@ public class SZKWebViewController: UIViewController {
         }
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if needHideBar{
+            navigationController?.setNavigationBarHidden(true, animated: animated)
+        }
+//        webView.configuration.userContentController.add(self, name: test)
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if needHideBar{
+            navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
+//        webView.configuration.userContentController.removeScriptMessageHandler(forName: test)
+    }
+    
     deinit {
         if canload{
             webView.removeObserver(self, forKeyPath: "estimatedProgress")
@@ -63,3 +82,14 @@ public class SZKWebViewController: UIViewController {
         LogInfo(message: "SZKWeb ViewController Release")
     }
 }
+
+//extension SZKWebViewController:WKNavigationDelegate,WKScriptMessageHandler,WKUIDelegate{
+//
+//    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+//        if message.name == test{}
+//    }
+//
+//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//        webView.evaluateJavaScript(test) { _, error in}
+//    }
+//}

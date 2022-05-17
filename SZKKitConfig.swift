@@ -15,6 +15,7 @@ public struct SZKKitConfig {
     public static var dataKey:String = "data"
     public static var messageKey:String = "message"
     public static var successCode:Int = 200
+    public static var enableTokenValidate = true
     public static var tokenInvalidateCode:Int = 0
     public static var timeout:TimeInterval = 15.0
     public static var themeColor:UIColor = .white
@@ -51,11 +52,12 @@ public struct SZKKitConfig {
         KingfisherManager.shared.cache.diskStorage.config.expiration = .days(5)
     }
     
-    public static func configRequestValue(codeKey:String,dataKey:String,messageKey:String,successCode:Int,tokenInvalidateCode:Int,timeout:TimeInterval){
+    public static func configRequestValue(codeKey:String,dataKey:String,messageKey:String,successCode:Int,enableTokenValidate:Bool,tokenInvalidateCode:Int,timeout:TimeInterval){
         self.codeKey = codeKey
         self.dataKey = dataKey
         self.messageKey = messageKey
         self.successCode = successCode
+        self.enableTokenValidate = enableTokenValidate
         self.tokenInvalidateCode = tokenInvalidateCode
         self.timeout = timeout
     }

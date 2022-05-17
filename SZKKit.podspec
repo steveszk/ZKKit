@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SZKKit"
-  spec.version      = "1.0.6"
+  spec.version      = "1.1.0"
   spec.summary      = "Some Util,Some Code"
 
   # This description is used to generate tags and improve search results.
@@ -25,8 +25,7 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-		Include SnapKit
-		Include ObjectMapper 
+		Include SnapKit 
 		Include SVProgressHUD 
 		Include IQKeyboardManagerSwift 
 		Include Moya/RxSwift 
@@ -103,7 +102,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  =  "*.swift", "Util/*.swift", "Extension/*.swift", "Common/*.swift"
+  spec.source_files  =  "*.swift", "Util/**/*.swift", "Extension/**/*.swift", "Common/**/*.swift", "Enum/**/*.swift", "PageView/**/*.swift"
 
   # spec.public_header_files = "Classes/**/*.h"
 
@@ -145,7 +144,6 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   spec.dependency 'SnapKit'
-  spec.dependency 'ObjectMapper'
   spec.dependency 'SVProgressHUD'
   spec.dependency 'IQKeyboardManagerSwift'
   spec.dependency 'Moya/RxSwift'
@@ -155,5 +153,4 @@ Pod::Spec.new do |spec|
   spec.dependency 'CocoaLumberjack/Swift'
   spec.dependency 'Kingfisher'
   spec.dependency 'MJRefresh'
-# spec.dependency 'MLeaksFinder'
 end

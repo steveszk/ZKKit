@@ -13,7 +13,7 @@ public extension UIFont{
     ///
     /// - Parameter size: 字体号
     /// - Returns: 常规平方字体
-    static func regular(size:CGFloat = 14) -> UIFont{
+    static func regular(size:CGFloat) -> UIFont{
         return UIFont(name: "PingFangSC-Regular", size: size)!
     }
     
@@ -21,7 +21,7 @@ public extension UIFont{
     ///
     /// - Parameter size: 字体号
     /// - Returns: 中号平方字体
-    static func bold(size:CGFloat = 14) -> UIFont{
+    static func bold(size:CGFloat) -> UIFont{
         return UIFont(name: "PingFangSC-Semibold", size: size)!
     }
     
@@ -29,7 +29,7 @@ public extension UIFont{
     ///
     /// - Parameter size: 字体号
     /// - Returns: 中号平方字体
-    static func medium(size:CGFloat = 14) -> UIFont{
+    static func medium(size:CGFloat) -> UIFont{
         return UIFont(name: "PingFangSC-Medium", size: size)!
     }
     

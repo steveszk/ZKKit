@@ -6,7 +6,6 @@
 //
 import RxSwift
 import Moya
-import ObjectMapper
 import SVProgressHUD
 
 public enum SZKError : Swift.Error {
@@ -66,14 +65,13 @@ extension Response{
 
         if let code = json[SZKKitConfig.codeKey] as? Int {
 
-            if code == SZKKitConfig.tokenInvalidateCode{
+            if SZKKitConfig.enableTokenValidate && code == SZKKitConfig.tokenInvalidateCode{
                 SZKKitUtil.sendTokenInvalidateNotification()
             }
 
             if code == SZKKitConfig.successCode{
                 if let content = json[SZKKitConfig.dataKey],let data = content as? Dictionary<String, Any>{
-
-                    if let object = Mapper<T>().map(JSON: data){
+                    if let object = type.mapFromDictionary(dic: data){
                         return object
                     }else{
                         feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -121,13 +119,20 @@ extension Response{
 
         if let code = json[SZKKitConfig.codeKey] as? Int {
 
-            if code == SZKKitConfig.tokenInvalidateCode{
+            if SZKKitConfig.enableTokenValidate && code == SZKKitConfig.tokenInvalidateCode{
                 SZKKitUtil.sendTokenInvalidateNotification()
             }
 
             if code == SZKKitConfig.successCode{
                 if let content = json[SZKKitConfig.dataKey],let data = content as? [Dictionary<String, Any>]{
-                    return Mapper<T>().mapArray(JSONArray: data)
+                    if let object = Array<T>.mapFromJson(value: data){
+                        return object
+                    }else{
+                        feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+                        LogError(message: "后台返回数据匹配失败")
+                        SVProgressHUD.showInfo(withStatus: "数据解析失败")
+                        throw SZKError.ParseJSONError
+                    }
                 }else{
                     feedback.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                     LogError(message: "后台返回数据转dictionary数组失败")
@@ -168,7 +173,7 @@ extension Response{
         
         if let code = json[SZKKitConfig.codeKey] as? Int {
             
-            if code == SZKKitConfig.tokenInvalidateCode{
+            if SZKKitConfig.enableTokenValidate && code == SZKKitConfig.tokenInvalidateCode{
                 SZKKitUtil.sendTokenInvalidateNotification()
             }
         
@@ -206,7 +211,7 @@ extension Response{
 
         if let code = json[SZKKitConfig.codeKey] as? Int {
 
-            if code == SZKKitConfig.tokenInvalidateCode{
+            if SZKKitConfig.enableTokenValidate && code == SZKKitConfig.tokenInvalidateCode{
                 SZKKitUtil.sendTokenInvalidateNotification()
             }
 
