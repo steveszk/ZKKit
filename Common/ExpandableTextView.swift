@@ -305,7 +305,7 @@ extension ExpandableTextView {
 
     private func textReplaceWordWithLink(text: NSAttributedString, linkName: NSAttributedString?) -> NSAttributedString {
         var lineTextWithLink = text
-        (text.string as NSString).enumerateSubstrings(in: NSRange(location: 0, length: text.length), options: [.byWords, .reverse]) { [self] (word, subRange, enclosingRange, stop) -> Void in
+        (text.string as NSString).enumerateSubstrings(in: NSRange(location: 0, length: text.length), options: [.reverse,.byComposedCharacterSequences]) { [self] (word, subRange, enclosingRange, stop) -> Void in
             let lineTextWithLastWordRemoved = text.attributedSubstring(from: NSRange(location: 0, length: subRange.location))
             let lineTextWithAddedLink = NSMutableAttributedString(attributedString: lineTextWithLastWordRemoved)
             if let ellipsis = self.ellipsis {
